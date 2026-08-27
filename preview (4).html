@@ -1,0 +1,2494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Maharashtra Board Study Hub</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f4f7fb;
+    color:#172033;
+}
+
+button{
+    font-family:inherit;
+}
+
+.header{
+    background:linear-gradient(135deg,#111827,#2563eb);
+    color:white;
+    padding:18px 5%;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 3px 15px rgba(0,0,0,.2);
+}
+
+.header-inner{
+    max-width:1400px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+}
+
+.logo{
+    font-size:25px;
+    font-weight:800;
+}
+
+.logo span{
+    color:#60a5fa;
+}
+
+.nav{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+}
+
+.nav button{
+    border:none;
+    background:transparent;
+    color:white;
+    padding:10px 14px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:600;
+}
+
+.nav button:hover,
+.nav button.active{
+    background:rgba(255,255,255,.15);
+}
+
+.hero{
+    padding:60px 5%;
+    background:linear-gradient(135deg,#dbeafe,#eff6ff);
+}
+
+.hero-inner{
+    max-width:1400px;
+    margin:auto;
+}
+
+.hero h1{
+    font-size:42px;
+    margin-bottom:15px;
+}
+
+.hero p{
+    max-width:800px;
+    font-size:18px;
+    line-height:1.6;
+    color:#475569;
+}
+
+.container{
+    max-width:1400px;
+    margin:auto;
+    padding:35px 5%;
+}
+
+.section{
+    display:none;
+}
+
+.section.active{
+    display:block;
+}
+
+.section-title{
+    font-size:30px;
+    margin-bottom:10px;
+}
+
+.section-subtitle{
+    color:#64748b;
+    margin-bottom:25px;
+}
+
+.subject-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.subject-card{
+    background:white;
+    border-radius:18px;
+    padding:25px;
+    box-shadow:0 8px 25px rgba(15,23,42,.08);
+    border:1px solid #e2e8f0;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.subject-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 15px 30px rgba(15,23,42,.13);
+}
+
+.subject-icon{
+    width:55px;
+    height:55px;
+    border-radius:14px;
+    background:#dbeafe;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:26px;
+    margin-bottom:15px;
+}
+
+.subject-card h3{
+    margin-bottom:8px;
+}
+
+.subject-card p{
+    color:#64748b;
+    font-size:14px;
+}
+
+.filter-bar{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-bottom:25px;
+}
+
+.filter-bar select,
+.filter-bar input{
+    padding:12px 15px;
+    border:1px solid #cbd5e1;
+    border-radius:9px;
+    background:white;
+    min-width:180px;
+}
+
+.paper-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+    gap:20px;
+}
+
+.paper-card{
+    background:white;
+    border-radius:16px;
+    padding:20px;
+    border:1px solid #e2e8f0;
+    box-shadow:0 6px 20px rgba(15,23,42,.07);
+}
+
+.paper-card h3{
+    margin-bottom:8px;
+}
+
+.paper-meta{
+    color:#64748b;
+    font-size:14px;
+    margin-bottom:15px;
+    line-height:1.6;
+}
+
+.badge{
+    display:inline-block;
+    background:#dbeafe;
+    color:#1d4ed8;
+    padding:5px 9px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.actions{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    border:none;
+    border-radius:8px;
+    padding:10px 14px;
+    cursor:pointer;
+    font-weight:700;
+}
+
+.btn-primary{
+    background:#2563eb;
+    color:white;
+}
+
+.btn-primary:hover{
+    background:#1d4ed8;
+}
+
+.btn-success{
+    background:#16a34a;
+    color:white;
+}
+
+.btn-warning{
+    background:#f59e0b;
+    color:white;
+}
+
+.btn-dark{
+    background:#111827;
+    color:white;
+}
+
+.btn-light{
+    background:#e2e8f0;
+    color:#172033;
+}
+
+.empty{
+    background:white;
+    border:1px dashed #94a3b8;
+    border-radius:15px;
+    padding:40px;
+    text-align:center;
+    color:#64748b;
+}
+
+/* TEST SERIES */
+
+.test-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:20px;
+}
+
+.test-card{
+    background:white;
+    padding:25px;
+    border-radius:18px;
+    border:1px solid #e2e8f0;
+    box-shadow:0 7px 22px rgba(15,23,42,.08);
+}
+
+.test-card h3{
+    margin-bottom:10px;
+}
+
+.test-card p{
+    color:#64748b;
+    line-height:1.5;
+    margin-bottom:18px;
+}
+
+/* SOLVER */
+
+#solverSection{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:#0f172a;
+    z-index:5000;
+    color:white;
+}
+
+.solver-header{
+    height:65px;
+    background:#111827;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 15px;
+    gap:10px;
+}
+
+.solver-title{
+    font-weight:800;
+}
+
+.timer{
+    background:#dc2626;
+    padding:10px 15px;
+    border-radius:8px;
+    font-weight:800;
+    min-width:100px;
+    text-align:center;
+}
+
+.solver-main{
+    height:calc(100vh - 65px);
+    display:grid;
+    grid-template-columns:58% 42%;
+}
+
+.pdf-panel{
+    background:#334155;
+    border-right:2px solid #475569;
+    position:relative;
+}
+
+.pdf-frame{
+    width:100%;
+    height:100%;
+    border:none;
+    background:white;
+}
+
+.pdf-fallback{
+    position:absolute;
+    top:10px;
+    left:10px;
+    right:10px;
+    background:#fff;
+    color:#111827;
+    padding:10px;
+    border-radius:8px;
+    z-index:2;
+    display:none;
+}
+
+.answer-panel{
+    background:#f8fafc;
+    color:#172033;
+    overflow-y:auto;
+    padding:20px;
+}
+
+.paper-info{
+    background:white;
+    padding:15px;
+    border-radius:12px;
+    margin-bottom:15px;
+    border:1px solid #e2e8f0;
+}
+
+.answer-box{
+    background:white;
+    padding:18px;
+    border-radius:12px;
+    border:1px solid #e2e8f0;
+}
+
+.question-nav{
+    display:grid;
+    grid-template-columns:repeat(10,1fr);
+    gap:6px;
+    margin:12px 0 18px;
+}
+
+.q-number{
+    border:1px solid #cbd5e1;
+    background:white;
+    padding:8px 4px;
+    border-radius:6px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.q-number.answered{
+    background:#dcfce7;
+    border-color:#22c55e;
+}
+
+.q-number.review{
+    background:#fef3c7;
+    border-color:#f59e0b;
+}
+
+.current-question{
+    padding:18px;
+    background:#eff6ff;
+    border-radius:10px;
+    margin-bottom:15px;
+}
+
+.answer-textarea{
+    width:100%;
+    min-height:180px;
+    padding:12px;
+    border:1px solid #cbd5e1;
+    border-radius:8px;
+    resize:vertical;
+    font-size:15px;
+}
+
+.solver-buttons{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:12px;
+}
+
+/* RESULTS */
+
+.result-box{
+    max-width:700px;
+    margin:30px auto;
+    background:white;
+    border-radius:20px;
+    padding:35px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,.1);
+}
+
+.result-number{
+    font-size:48px;
+    font-weight:900;
+    color:#2563eb;
+    margin:15px;
+}
+
+.stat-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+    margin:20px 0;
+}
+
+.stat{
+    padding:15px;
+    background:#f1f5f9;
+    border-radius:10px;
+}
+
+.stat strong{
+    display:block;
+    font-size:24px;
+}
+
+/* TEST SCREEN */
+
+#testScreen{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:#f8fafc;
+    z-index:4000;
+    overflow-y:auto;
+}
+
+.test-header{
+    position:sticky;
+    top:0;
+    background:#111827;
+    color:white;
+    padding:15px 5%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    z-index:10;
+}
+
+.test-body{
+    max-width:900px;
+    margin:auto;
+    padding:30px 5%;
+}
+
+.mcq{
+    background:white;
+    padding:22px;
+    border-radius:14px;
+    margin-bottom:18px;
+    border:1px solid #e2e8f0;
+}
+
+.mcq h3{
+    margin-bottom:15px;
+    line-height:1.5;
+}
+
+.option{
+    display:block;
+    padding:12px;
+    margin:8px 0;
+    border:1px solid #cbd5e1;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.option:hover{
+    background:#eff6ff;
+}
+
+.option input{
+    margin-right:8px;
+}
+
+.footer{
+    margin-top:50px;
+    padding:30px 5%;
+    background:#111827;
+    color:#cbd5e1;
+    text-align:center;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+    .header-inner{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .hero h1{
+        font-size:32px;
+    }
+
+    .solver-main{
+        grid-template-columns:1fr;
+        grid-template-rows:45% 55%;
+    }
+
+    .pdf-panel{
+        border-right:none;
+        border-bottom:2px solid #475569;
+    }
+
+    .solver-header{
+        height:60px;
+    }
+
+    .solver-main{
+        height:calc(100vh - 60px);
+    }
+}
+
+@media(max-width:600px){
+    .nav{
+        width:100%;
+    }
+
+    .nav button{
+        flex:1;
+        font-size:12px;
+    }
+
+    .stat-grid{
+        grid-template-columns:1fr;
+    }
+
+    .question-nav{
+        grid-template-columns:repeat(6,1fr);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header class="header">
+<div class="header-inner">
+
+<div class="logo">
+Maharashtra <span>Board Study Hub</span>
+</div>
+
+<nav class="nav">
+<button class="active" onclick="showSection('home',this)">Home</button>
+<button onclick="showSection('papers',this)">Previous Papers</button>
+<button onclick="showSection('tests',this)">Test Series</button>
+<button onclick="showSection('subjects',this)">Subjects</button>
+</nav>
+
+</div>
+</header>
+
+
+<!-- ================= HOME ================= -->
+
+<section id="home" class="section active">
+
+<div class="hero">
+<div class="hero-inner">
+
+<h1>Prepare Smarter for Maharashtra Board</h1>
+
+<p>
+Practice previous year question papers, solve complete papers,
+take online tests and track your preparation — all from one website.
+</p>
+
+<br>
+
+<button class="btn btn-primary"
+onclick="showSection('papers')">
+📚 Previous Year Papers
+</button>
+
+<button class="btn btn-success"
+onclick="showSection('tests')">
+📝 Start Test Series
+</button>
+
+</div>
+</div>
+
+<div class="container">
+
+<h2 class="section-title">What You Can Do</h2>
+<p class="section-subtitle">
+Everything required for board examination practice.
+</p>
+
+<div class="subject-grid">
+
+<div class="subject-card" onclick="showSection('papers')">
+<div class="subject-icon">📄</div>
+<h3>Previous Year Papers</h3>
+<p>Open complete papers directly inside the website.</p>
+</div>
+
+<div class="subject-card" onclick="showSection('tests')">
+<div class="subject-icon">📝</div>
+<h3>Test Series</h3>
+<p>Take online practice tests and check your score.</p>
+</div>
+
+<div class="subject-card" onclick="showSection('papers')">
+<div class="subject-icon">⏱️</div>
+<h3>Paper Solving</h3>
+<p>Solve a complete paper with a 3-hour timer.</p>
+</div>
+
+<div class="subject-card">
+<div class="subject-icon">💾</div>
+<h3>Auto Save</h3>
+<p>Your answers are automatically saved in your browser.</p>
+</div>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- ================= SUBJECTS ================= -->
+
+<section id="subjects" class="section">
+
+<div class="container">
+
+<h2 class="section-title">Subjects</h2>
+<p class="section-subtitle">HSC Commerce subjects</p>
+
+<div class="subject-grid" id="subjectGrid"></div>
+
+</div>
+</section>
+
+
+<!-- ================= PAPERS ================= -->
+
+<section id="papers" class="section">
+
+<div class="container">
+
+<h2 class="section-title">Previous Year Question Papers</h2>
+
+<p class="section-subtitle">
+Select a subject and year. You can either view the complete PDF
+or enter <b>Solve Paper</b> mode.
+</p>
+
+<div class="filter-bar">
+
+<select id="subjectFilter" onchange="renderPapers()">
+<option value="all">All Subjects</option>
+</select>
+
+<select id="yearFilter" onchange="renderPapers()">
+<option value="all">All Years</option>
+<option value="2026">2026</option>
+<option value="2025">2025</option>
+<option value="2024">2024</option>
+</select>
+
+<select id="sessionFilter" onchange="renderPapers()">
+<option value="all">All Sessions</option>
+<option value="March">March</option>
+<option value="July">July</option>
+<option value="June">June</option>
+</select>
+
+<input
+type="text"
+id="paperSearch"
+placeholder="Search subject..."
+oninput="renderPapers()"
+>
+
+</div>
+
+<div id="paperGrid" class="paper-grid"></div>
+
+</div>
+</section>
+
+
+<!-- ================= TEST SERIES ================= -->
+
+<section id="tests" class="section">
+
+<div class="container">
+
+<h2 class="section-title">📝 Test Series</h2>
+
+<p class="section-subtitle">
+Choose a subject and attempt an online practice test.
+</p>
+
+<div class="test-grid" id="testGrid"></div>
+
+</div>
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+<p>
+© 2026 Maharashtra Board Study Hub
+</p>
+
+<p style="margin-top:8px">
+Previous Papers • Paper Solver • Test Series • Practice
+</p>
+</footer>
+
+
+<!-- ================= SOLVER ================= -->
+
+<div id="solverSection">
+
+<div class="solver-header">
+
+<div class="solver-title" id="solverTitle">
+Paper Solver
+</div>
+
+<div style="display:flex;gap:8px;align-items:center">
+
+<div class="timer" id="timer">
+03:00:00
+</div>
+
+<button
+class="btn btn-light"
+onclick="closeSolver()">
+✕ Exit
+</button>
+
+</div>
+
+</div>
+
+
+<div class="solver-main">
+
+<!-- PDF -->
+
+<div class="pdf-panel">
+
+<div class="pdf-fallback" id="pdfFallback">
+The browser could not display this PDF.
+<button class="btn btn-primary"
+onclick="openCurrentPdf()">
+Open PDF
+</button>
+</div>
+
+<iframe
+id="pdfFrame"
+class="pdf-frame"
+title="Question Paper">
+</iframe>
+
+</div>
+
+
+<!-- ANSWER PANEL -->
+
+<div class="answer-panel">
+
+<div class="paper-info">
+
+<h2 id="answerPaperTitle">
+Solve Paper
+</h2>
+
+<p id="answerPaperDetails"></p>
+
+</div>
+
+
+<div class="answer-box">
+
+<h3>Question Navigator</h3>
+
+<p style="font-size:13px;color:#64748b;margin-top:5px">
+Green = answered &nbsp; | &nbsp;
+Yellow = marked for review
+</p>
+
+<div
+class="question-nav"
+id="questionNav">
+</div>
+
+
+<div class="current-question">
+
+<h3 id="currentQuestionTitle">
+Question 1
+</h3>
+
+<p>
+Refer to the question paper on the left and enter your
+answer below.
+</p>
+
+</div>
+
+
+<textarea
+id="answerText"
+class="answer-textarea"
+placeholder="Write your answer here..."></textarea>
+
+
+<div class="solver-buttons">
+
+<button
+class="btn btn-primary"
+onclick="saveCurrentAnswer()">
+💾 Save Answer
+</button>
+
+<button
+class="btn btn-warning"
+onclick="toggleReview()">
+⭐ Mark Review
+</button>
+
+<button
+class="btn btn-light"
+onclick="previousQuestion()">
+← Previous
+</button>
+
+<button
+class="btn btn-light"
+onclick="nextQuestion()">
+Next →
+</button>
+
+</div>
+
+
+<div style="margin-top:20px">
+
+<button
+class="btn btn-success"
+style="width:100%;padding:15px"
+onclick="submitPaper()">
+✅ Submit Paper
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- ================= RESULT ================= -->
+
+<div id="resultScreen" class="section">
+
+<div class="container">
+
+<div class="result-box">
+
+<h2>Paper Submitted</h2>
+
+<div class="result-number"
+id="resultScore">
+0
+</div>
+
+<div class="stat-grid">
+
+<div class="stat">
+<strong id="resultAnswered">0</strong>
+Answered
+</div>
+
+<div class="stat">
+<strong id="resultUnanswered">0</strong>
+Unanswered
+</div>
+
+<div class="stat">
+<strong id="resultReview">0</strong>
+Review
+</div>
+
+</div>
+
+<button
+class="btn btn-primary"
+onclick="closeResult()">
+Back to Papers
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- ================= TEST SCREEN ================= -->
+
+<div id="testScreen">
+
+<div class="test-header">
+
+<div id="testTitle">
+Practice Test
+</div>
+
+<div id="testTimer">
+30:00
+</div>
+
+</div>
+
+<div class="test-body">
+
+<div id="testQuestions"></div>
+
+<button
+class="btn btn-success"
+style="width:100%;padding:15px"
+onclick="submitTest()">
+Submit Test
+</button>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   SUBJECTS
+========================================================= */
+
+const subjects = {
+
+    english:{
+        name:"English",
+        code:"01",
+        icon:"📖"
+    },
+
+    maths:{
+        name:"Mathematics & Statistics",
+        code:"40",
+        icon:"📐"
+    },
+
+    economics:{
+        name:"Economics",
+        code:"49",
+        icon:"📊"
+    },
+
+    bka:{
+        name:"Book-Keeping & Accountancy",
+        code:"50",
+        icon:"🧮"
+    },
+
+    ocm:{
+        name:"Organisation of Commerce & Management",
+        code:"51",
+        icon:"🏢"
+    },
+
+    sp:{
+        name:"Secretarial Practice",
+        code:"52",
+        icon:"📑"
+    }
+
+};
+
+
+/* =========================================================
+   PDF DATABASE
+   These are the URLs supplied by the user.
+========================================================= */
+
+const papers = [
+
+/* ================= MARCH 2024 ================= */
+
+{
+subject:"english",
+year:"2024",
+session:"March",
+url:"https://state-board-strapi-upload.blr1.digitaloceanspaces.com/J_866_c47ff4347a.pdf"
+},
+
+{
+subject:"maths",
+year:"2024",
+session:"March",
+url:"https://state-board-strapi-upload.blr1.digitaloceanspaces.com/J_841_f19650382f.pdf"
+},
+
+{
+subject:"economics",
+year:"2024",
+session:"March",
+url:"https://state-board-strapi-upload.blr1.digitaloceanspaces.com/J_801_e8841e0007.pdf"
+},
+
+{
+subject:"bka",
+year:"2024",
+session:"March",
+url:"https://state-board-strapi-upload.blr1.digitaloceanspaces.com/J_904_76b0ffe2f5.pdf"
+},
+
+{
+subject:"ocm",
+year:"2024",
+session:"March",
+url:"https://state-board-strapi-upload.blr1.digitaloceanspaces.com/J_897_b5ab03b296.pdf"
+},
+
+{
+subject:"sp",
+year:"2024",
+session:"March",
+url:"https://state-board-strapi-upload.blr1.digitaloceanspaces.com/J_828_1df1d12b13.pdf"
+},
+
+
+/* ================= MARCH 2025 ================= */
+
+{
+subject:"english",
+year:"2025",
+session:"March",
+url:"https://state-board-strapi-upload.blr1.digitaloceanspaces.com/J_316_1d2016f594.pdf"
+},
+
+{
+subject:"maths",
+year:"2025",
+session:"March",
+url:"https://state-board-strapi-upload.blr1.digitaloceanspaces.com/J_291_c7e81ceea8.pdf"
+},
+
+{
+subject:"economics",
+year:"2025",
+session:"March",
+url:"https://state-board-strapi-upload.blr1.digitaloceanspaces.com/J_278_eaace94384.pdf"
+},
+
+{
+subject:"bka",
+year:"2025",
+session:"March",
+url:"https://state-board-strapi-upload.blr1.digitaloceanspaces.com/J_347_9af74d0b20.pdf"
+},
+
+{
+subject:"ocm",
+year:"2025",
+session:"March",
+url:"https://state-board-strapi-upload.blr1.digitaloceanspaces.com/J_354_25150562d6.pdf"
+},
+
+{
+subject:"sp",
+year:"2025",
+session:"March",
+url:"https://state-board-strapi-upload.blr1.digitaloceanspaces.com/J_251_d163542f57.pdf"
+},
+
+
+/* ================= MARCH 2026 ================= */
+
+{
+subject:"english",
+year:"2026",
+session:"March",
+url:"https://state-board-strapi-upload.blr1.digitaloceanspaces.com/J_169_f6db0a8d52.pdf"
+},
+
+{
+subject:"maths",
+year:"2026",
+session:"March",
+url:"https://state-board-strapi-upload.blr1.digitaloceanspaces.com/J_141_cdd4583202.pdf"
+},
+
+{
+subject:"economics",
+year:"2026",
+session:"March",
+url:"https://state-board-strapi-upload.blr1.digitaloceanspaces.com/J_128_1f7539fe96.pdf"
+},
+
+{
+subject:"bka",
+year:"2026",
+session:"March",
+url:"https://state-board-strapi-upload.blr1.digitaloceanspaces.com/J_196_47090d5c4a.pdf"
+},
+
+{
+subject:"ocm",
+year:"2026",
+session:"March",
+url:"https://state-board-strapi-upload.blr1.digitaloceanspaces.com/J_183_e254dac27f.pdf"
+},
+
+{
+subject:"sp",
+year:"2026",
+session:"March",
+url:"https://state-board-strapi-upload.blr1.digitaloceanspaces.com/J_101_bf26b0b5ee.pdf"
+},
+
+
+/* ================= JULY 2024 ================= */
+
+{
+subject:"english",
+year:"2024",
+session:"July",
+url:"https://state-board-strapi-upload.blr1.digitaloceanspaces.com/j_178_631c4b7e6f.pdf"
+},
+
+{
+subject:"maths",
+year:"2024",
+session:"July",
+url:"https://state-board-strapi-upload.blr1.digitaloceanspaces.com/j_138_9e77b2d5df.pdf"
+},
+
+{
+subject:"economics",
+year:"2024",
+session:"July",
+url:"https://state-board-strapi-upload.blr1.digitaloceanspaces.com/j_186_e7900bc28a.pdf"
+},
+
+{
+subject:"bka",
+year:"2024",
+session:"July",
+url:"https://state-board-strapi-upload.blr1.digitaloceanspaces.com/j_209_efc3bd7da9.pdf"
+},
+
+{
+subject:"ocm",
+year:"2024",
+session:"July",
+url:"https://state-board-strapi-upload.blr1.digitaloceanspaces.com/j_220_1b577367fc.pdf"
+},
+
+{
+subject:"sp",
+year:"2024",
+session:"July",
+url:"https://state-board-strapi-upload.blr1.digitaloceanspaces.com/j_101_3b974241d2.pdf"
+},
+
+
+/* ================= JULY 2025 ================= */
+
+{
+subject:"english",
+year:"2025",
+session:"July",
+url:"https://state-board-strapi-upload.blr1.digitaloceanspaces.com/j_388_dd6fba7759.pdf"
+},
+
+{
+subject:"maths",
+year:"2025",
+session:"July",
+url:"https://state-board-strapi-upload.blr1.digitaloceanspaces.com/j_348_80a3af7377.pdf"
+},
+
+{
+subject:"economics",
+year:"2025",
+session:"July",
+url:"https://state-board-strapi-upload.blr1.digitaloceanspaces.com/j_396_b4c6389068.pdf"
+},
+
+{
+subject:"bka",
+year:"2025",
+session:"July",
+url:"https://state-board-strapi-upload.blr1.digitaloceanspaces.com/j_422_8c7fb46d3d.pdf"
+},
+
+{
+subject:"ocm",
+year:"2025",
+session:"July",
+url:"https://state-board-strapi-upload.blr1.digitaloceanspaces.com/j_433_6c0782d7c5.pdf"
+},
+
+{
+subject:"sp",
+year:"2025",
+session:"July",
+url:"https://state-board-strapi-upload.blr1.digitaloceanspaces.com/j_311_ec7ddaa5e2.pdf"
+},
+
+
+/* ================= JUNE 2026 ================= */
+
+{
+subject:"english",
+year:"2026",
+session:"June",
+url:"https://state-board-strapi-upload.blr1.digitaloceanspaces.com/J280_dc387a708a.pdf"
+},
+
+{
+subject:"maths",
+year:"2026",
+session:"June",
+url:"https://state-board-strapi-upload.blr1.digitaloceanspaces.com/J238_56a15c785c.pdf"
+},
+
+{
+subject:"economics",
+year:"2026",
+session:"June",
+url:"https://state-board-strapi-upload.blr1.digitaloceanspaces.com/J283_6be2df1629.pdf"
+},
+
+{
+subject:"bka",
+year:"2026",
+session:"June",
+url:"https://state-board-strapi-upload.blr1.digitaloceanspaces.com/J309_778ab79e55.pdf"
+},
+
+{
+subject:"ocm",
+year:"2026",
+session:"June",
+url:"https://state-board-strapi-upload.blr1.digitaloceanspaces.com/J320_eb5f28eb3a.pdf"
+},
+
+{
+subject:"sp",
+year:"2026",
+session:"June",
+url:"https://state-board-strapi-upload.blr1.digitaloceanspaces.com/J201_9e5c9b7778.pdf"
+}
+
+];
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+function showSection(id,button){
+
+    document.querySelectorAll(".section")
+        .forEach(s=>s.classList.remove("active"));
+
+    const section=document.getElementById(id);
+
+    if(section){
+        section.classList.add("active");
+    }
+
+    document.querySelectorAll(".nav button")
+        .forEach(b=>b.classList.remove("active"));
+
+    if(button){
+        button.classList.add("active");
+    }
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+    if(id==="papers"){
+        renderPapers();
+    }
+
+    if(id==="subjects"){
+        renderSubjects();
+    }
+
+    if(id==="tests"){
+        renderTests();
+    }
+}
+
+
+/* =========================================================
+   SUBJECTS
+========================================================= */
+
+function renderSubjects(){
+
+    const grid=document.getElementById("subjectGrid");
+
+    grid.innerHTML="";
+
+    Object.keys(subjects).forEach(key=>{
+
+        const s=subjects[key];
+
+        grid.innerHTML+=`
+
+        <div class="subject-card"
+        onclick="filterSubject('${key}')">
+
+            <div class="subject-icon">
+                ${s.icon}
+            </div>
+
+            <h3>${s.name}</h3>
+
+            <p>
+                Board Code: ${s.code}
+            </p>
+
+        </div>
+
+        `;
+
+    });
+
+}
+
+
+function filterSubject(subject){
+
+    showSection("papers");
+
+    document.getElementById("subjectFilter").value=subject;
+
+    renderPapers();
+}
+
+
+/* =========================================================
+   PAPER FILTER
+========================================================= */
+
+function setupFilters(){
+
+    const select=document.getElementById("subjectFilter");
+
+    Object.keys(subjects).forEach(key=>{
+
+        select.innerHTML+=`
+        <option value="${key}">
+            ${subjects[key].name}
+        </option>
+        `;
+
+    });
+
+}
+
+
+/* =========================================================
+   RENDER PAPERS
+========================================================= */
+
+function renderPapers(){
+
+    const grid=document.getElementById("paperGrid");
+
+    const subject=
+        document.getElementById("subjectFilter").value;
+
+    const year=
+        document.getElementById("yearFilter").value;
+
+    const session=
+        document.getElementById("sessionFilter").value;
+
+    const search=
+        document.getElementById("paperSearch")
+        .value
+        .toLowerCase();
+
+    let filtered=papers.filter(p=>{
+
+        const subjectMatch=
+            subject==="all" || p.subject===subject;
+
+        const yearMatch=
+            year==="all" || p.year===year;
+
+        const sessionMatch=
+            session==="all" || p.session===session;
+
+        const searchMatch=
+            subjects[p.subject].name
+            .toLowerCase()
+            .includes(search);
+
+        return subjectMatch &&
+               yearMatch &&
+               sessionMatch &&
+               searchMatch;
+
+    });
+
+
+    if(filtered.length===0){
+
+        grid.innerHTML=`
+        <div class="empty">
+            <h3>No papers found</h3>
+            <p>Try another subject, year or session.</p>
+        </div>
+        `;
+
+        return;
+    }
+
+
+    grid.innerHTML="";
+
+
+    filtered.forEach((paper,index)=>{
+
+        const s=subjects[paper.subject];
+
+        grid.innerHTML+=`
+
+        <div class="paper-card">
+
+            <span class="badge">
+                ${paper.session} ${paper.year}
+            </span>
+
+            <h3>
+                ${s.icon} ${s.name}
+            </h3>
+
+            <div class="paper-meta">
+
+                Maharashtra State Board<br>
+
+                Subject Code: ${s.code}<br>
+
+                ${paper.session} ${paper.year}
+
+            </div>
+
+            <div class="actions">
+
+                <button
+                class="btn btn-primary"
+                onclick="viewPaper(${papers.indexOf(paper)})">
+                    📄 View Paper
+                </button>
+
+                <button
+                class="btn btn-success"
+                onclick="startSolver(${papers.indexOf(paper)})">
+                    ✍️ Solve Paper
+                </button>
+
+            </div>
+
+        </div>
+
+        `;
+
+    });
+
+}
+
+
+/* =========================================================
+   VIEW PAPER INSIDE WEBSITE
+========================================================= */
+
+function viewPaper(index){
+
+    const paper=papers[index];
+
+    document.getElementById("solverSection").style.display="block";
+
+    document.getElementById("solverTitle").innerText=
+        subjects[paper.subject].name+
+        " — "+paper.session+" "+paper.year;
+
+    document.getElementById("answerPaperTitle").innerText=
+        subjects[paper.subject].name;
+
+    document.getElementById("answerPaperDetails").innerText=
+        paper.session+" "+paper.year+
+        " • Question Paper";
+
+    document.getElementById("pdfFrame").src=paper.url;
+
+    document.getElementById("pdfFallback").style.display="none";
+
+    /*
+       VIEW-ONLY MODE
+    */
+
+    document.querySelector(".answer-panel").innerHTML=`
+
+        <div class="paper-info">
+
+            <h2>
+                ${subjects[paper.subject].name}
+            </h2>
+
+            <p>
+                ${paper.session} ${paper.year}
+            </p>
+
+        </div>
+
+        <div class="answer-box">
+
+            <h2>📄 Complete Question Paper</h2>
+
+            <p style="margin-top:12px;color:#64748b">
+                The complete PDF is displayed directly
+                inside this website.
+            </p>
+
+            <br>
+
+            <button
+            class="btn btn-success"
+            style="width:100%;padding:14px"
+            onclick="startSolver(${index})">
+
+                ✍️ Solve This Paper
+
+            </button>
+
+            <br><br>
+
+            <button
+            class="btn btn-light"
+            style="width:100%"
+            onclick="closeSolver()">
+
+                ← Back to Papers
+
+            </button>
+
+        </div>
+
+    `;
+
+}
+
+
+/* =========================================================
+   SOLVER VARIABLES
+========================================================= */
+
+let currentPaper=null;
+
+let currentQuestion=1;
+
+let totalQuestions=25;
+
+let answers={};
+
+let review={};
+
+let timerSeconds=10800;
+
+let timerInterval=null;
+
+
+/* =========================================================
+   START SOLVER
+========================================================= */
+
+function startSolver(index){
+
+    currentPaper=papers[index];
+
+    currentQuestion=1;
+
+    totalQuestions=25;
+
+    const saved=
+        localStorage.getItem(
+            "solver_"+index
+        );
+
+    if(saved){
+
+        try{
+
+            const data=JSON.parse(saved);
+
+            answers=data.answers || {};
+
+            review=data.review || {};
+
+        }catch(e){
+
+            answers={};
+            review={};
+
+        }
+
+    }else{
+
+        answers={};
+        review={};
+
+    }
+
+
+    document.getElementById("solverSection")
+        .style.display="block";
+
+
+    document.getElementById("solverTitle")
+        .innerText=
+        "✍️ Solve: "+
+        subjects[currentPaper.subject].name+
+        " — "+
+        currentPaper.session+
+        " "+
+        currentPaper.year;
+
+
+    document.getElementById("answerPaperTitle")
+        .innerText=
+        subjects[currentPaper.subject].name;
+
+
+    document.getElementById("answerPaperDetails")
+        .innerText=
+        currentPaper.session+
+        " "+
+        currentPaper.year+
+        " • Full Paper";
+
+
+    document.getElementById("pdfFrame")
+        .src=currentPaper.url;
+
+
+    renderQuestionNavigator();
+
+    loadQuestion(1);
+
+    startTimer();
+
+}
+
+
+/* =========================================================
+   QUESTION NAVIGATOR
+========================================================= */
+
+function renderQuestionNavigator(){
+
+    const nav=
+        document.getElementById("questionNav");
+
+    nav.innerHTML="";
+
+
+    for(let i=1;i<=totalQuestions;i++){
+
+        const btn=
+            document.createElement("button");
+
+        btn.className="q-number";
+
+        btn.innerText=i;
+
+        if(answers[i]){
+            btn.classList.add("answered");
+        }
+
+        if(review[i]){
+            btn.classList.add("review");
+        }
+
+        btn.onclick=()=>{
+
+            saveCurrentAnswer();
+
+            loadQuestion(i);
+
+        };
+
+        nav.appendChild(btn);
+
+    }
+
+}
+
+
+/* =========================================================
+   LOAD QUESTION
+========================================================= */
+
+function loadQuestion(number){
+
+    currentQuestion=number;
+
+    document.getElementById("currentQuestionTitle")
+        .innerText=
+        "Question "+number;
+
+
+    document.getElementById("answerText")
+        .value=
+        answers[number] || "";
+
+
+    renderQuestionNavigator();
+
+}
+
+
+/* =========================================================
+   SAVE ANSWER
+========================================================= */
+
+function saveCurrentAnswer(){
+
+    const text=
+        document.getElementById("answerText")
+        .value
+        .trim();
+
+    if(text){
+
+        answers[currentQuestion]=text;
+
+    }else{
+
+        delete answers[currentQuestion];
+
+    }
+
+
+    if(currentPaper){
+
+        const index=papers.indexOf(currentPaper);
+
+        localStorage.setItem(
+
+            "solver_"+index,
+
+            JSON.stringify({
+                answers:answers,
+                review:review
+            })
+
+        );
+
+    }
+
+    renderQuestionNavigator();
+
+}
+
+
+/* =========================================================
+   REVIEW
+========================================================= */
+
+function toggleReview(){
+
+    review[currentQuestion]=
+        !review[currentQuestion];
+
+    saveCurrentAnswer();
+
+}
+
+
+/* =========================================================
+   NEXT / PREVIOUS
+========================================================= */
+
+function nextQuestion(){
+
+    saveCurrentAnswer();
+
+    if(currentQuestion<totalQuestions){
+
+        loadQuestion(currentQuestion+1);
+
+    }
+
+}
+
+
+function previousQuestion(){
+
+    saveCurrentAnswer();
+
+    if(currentQuestion>1){
+
+        loadQuestion(currentQuestion-1);
+
+    }
+
+}
+
+
+/* =========================================================
+   TIMER
+========================================================= */
+
+function startTimer(){
+
+    clearInterval(timerInterval);
+
+    timerSeconds=10800;
+
+    updateTimer();
+
+    timerInterval=setInterval(()=>{
+
+        timerSeconds--;
+
+        updateTimer();
+
+        if(timerSeconds<=0){
+
+            clearInterval(timerInterval);
+
+            alert(
+                "⏰ Time is over. Your paper will be submitted."
+            );
+
+            submitPaper();
+
+        }
+
+    },1000);
+
+}
+
+
+function updateTimer(){
+
+    const hours=
+        Math.floor(timerSeconds/3600);
+
+    const minutes=
+        Math.floor(
+            (timerSeconds%3600)/60
+        );
+
+    const seconds=
+        timerSeconds%60;
+
+
+    document.getElementById("timer")
+        .innerText=
+        String(hours).padStart(2,"0")+
+        ":"+
+        String(minutes).padStart(2,"0")+
+        ":"+
+        String(seconds).padStart(2,"0");
+
+}
+
+
+/* =========================================================
+   SUBMIT PAPER
+========================================================= */
+
+function submitPaper(){
+
+    saveCurrentAnswer();
+
+    clearInterval(timerInterval);
+
+    const answered=
+        Object.keys(answers).length;
+
+    const unanswered=
+        totalQuestions-answered;
+
+    const reviewed=
+        Object.keys(review)
+        .filter(k=>review[k])
+        .length;
+
+
+    document.getElementById("solverSection")
+        .style.display="none";
+
+
+    document.getElementById("resultScreen")
+        .classList.add("active");
+
+
+    document.getElementById("resultScore")
+        .innerText=
+        answered+" / "+totalQuestions;
+
+
+    document.getElementById("resultAnswered")
+        .innerText=answered;
+
+
+    document.getElementById("resultUnanswered")
+        .innerText=unanswered;
+
+
+    document.getElementById("resultReview")
+        .innerText=reviewed;
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+function closeResult(){
+
+    document.getElementById("resultScreen")
+        .classList.remove("active");
+
+    showSection("papers");
+
+}
+
+
+/* =========================================================
+   CLOSE SOLVER
+========================================================= */
+
+function closeSolver(){
+
+    saveCurrentAnswer();
+
+    clearInterval(timerInterval);
+
+    document.getElementById("solverSection")
+        .style.display="none";
+
+    document.getElementById("pdfFrame")
+        .src="";
+
+    showSection("papers");
+
+}
+
+
+/* =========================================================
+   OPEN CURRENT PDF
+========================================================= */
+
+function openCurrentPdf(){
+
+    if(currentPaper){
+
+        window.open(
+            currentPaper.url,
+            "_blank"
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   TEST SERIES
+========================================================= */
+
+
+/*
+   These tests are independent of the PDFs.
+
+   You can add unlimited questions to this database.
+*/
+
+const testBank={
+
+english:[
+{
+q:"Which of the following is a synonym of 'happy'?",
+o:["Sad","Joyful","Angry","Weak"],
+a:1
+},
+{
+q:"Choose the correct plural form of 'child'.",
+o:["Childs","Childes","Children","Childrens"],
+a:2
+},
+{
+q:"A person who writes poems is called a:",
+o:["Poet","Painter","Singer","Editor"],
+a:0
+},
+{
+q:"Choose the correct article: He is ___ honest man.",
+o:["a","an","the","no article"],
+a:1
+},
+{
+q:"Opposite of 'ancient' is:",
+o:["Old","Modern","Past","Historic"],
+a:1
+}
+],
+
+maths:[
+{
+q:"If x + 5 = 10, then x is:",
+o:["2","5","10","15"],
+a:1
+},
+{
+q:"The derivative of x² is:",
+o:["x","2x","x³","2"],
+a:1
+},
+{
+q:"The probability of getting a head in a fair coin toss is:",
+o:["0","1","1/2","2"],
+a:2
+},
+{
+q:"The slope of y = 3x + 2 is:",
+o:["2","3","5","1"],
+a:1
+},
+{
+q:"A matrix with equal number of rows and columns is called:",
+o:["Row matrix","Column matrix","Square matrix","Zero matrix"],
+a:2
+}
+],
+
+economics:[
+{
+q:"Demand generally decreases when price:",
+o:["Decreases","Increases","Remains constant","Becomes zero"],
+a:1
+},
+{
+q:"The central problem of an economy arises because resources are:",
+o:["Unlimited","Scarce","Free","Infinite"],
+a:1
+},
+{
+q:"GDP stands for:",
+o:["Gross Domestic Product","General Domestic Price","Gross Development Product","General Development Plan"],
+a:0
+},
+{
+q:"Inflation means:",
+o:["Fall in prices","Rise in general price level","Fall in income","Rise in unemployment only"],
+a:1
+},
+{
+q:"The study of individual economic units is:",
+o:["Macroeconomics","Microeconomics","Statistics","Accounting"],
+a:1
+}
+],
+
+bka:[
+{
+q:"Assets are:",
+o:["Resources owned by business","Expenses","Losses","Liabilities only"],
+a:0
+},
+{
+q:"Capital is a:",
+o:["Liability of business","Expense","Income","Loss"],
+a:0
+},
+{
+q:"The book in which transactions are first recorded is:",
+o:["Ledger","Journal","Balance Sheet","Trial Balance"],
+a:1
+},
+{
+q:"Trial balance is prepared to check:",
+o:["Profit","Arithmetical accuracy","Cash","Sales"],
+a:1
+},
+{
+q:"Goodwill is a:",
+o:["Tangible asset","Intangible asset","Liability","Expense"],
+a:1
+}
+],
+
+ocm:[
+{
+q:"Planning is:",
+o:["A primary function of management","A secondary function","A financial statement","A tax"],
+a:0
+},
+{
+q:"The process of grouping activities is:",
+o:["Staffing","Organising","Controlling","Directing"],
+a:1
+},
+{
+q:"Marketing begins with:",
+o:["Production","Consumer needs","Advertising","Selling"],
+a:1
+},
+{
+q:"An entrepreneur is a person who:",
+o:["Only works for salary","Starts and manages a business","Only invests money","Only buys goods"],
+a:1
+},
+{
+q:"Controlling compares actual performance with:",
+o:["Capital","Standards","Sales only","Expenses only"],
+a:1
+}
+],
+
+sp:[
+{
+q:"A company secretary is mainly concerned with:",
+o:["Compliance and administration","Only production","Only sales","Only advertising"],
+a:0
+},
+{
+q:"Minutes are records of:",
+o:["Meetings","Sales","Purchases","Cash"],
+a:0
+},
+{
+q:"A prospectus is generally issued by:",
+o:["Company","Bank only","Customer","Employee"],
+a:0
+},
+{
+q:"Shares represent:",
+o:["Ownership in a company","Loan only","Expense","Income"],
+a:0
+},
+{
+q:"A quorum means:",
+o:["Minimum members required for a meeting","Maximum profit","Company capital","Dividend"],
+a:0
+}
+]
+
+};
+
+
+/* =========================================================
+   TEST CARDS
+========================================================= */
+
+function renderTests(){
+
+    const grid=document.getElementById("testGrid");
+
+    grid.innerHTML="";
+
+
+    Object.keys(subjects).forEach(key=>{
+
+        const s=subjects[key];
+
+        grid.innerHTML+=`
+
+        <div class="test-card">
+
+            <div style="font-size:35px">
+                ${s.icon}
+            </div>
+
+            <h3>
+                ${s.name}
+            </h3>
+
+            <p>
+                Practice Test Series
+            </p>
+
+            <p>
+                Questions: 5<br>
+                Instant result<br>
+                Objective questions
+            </p>
+
+            <button
+            class="btn btn-primary"
+            onclick="startTest('${key}')">
+
+                Start Test
+
+            </button>
+
+        </div>
+
+        `;
+
+    });
+
+}
+
+
+/* =========================================================
+   TEST VARIABLES
+========================================================= */
+
+let activeTestSubject=null;
+
+let testQuestions=[];
+
+let testTimer=1800;
+
+let testInterval=null;
+
+
+/* =========================================================
+   START TEST
+========================================================= */
+
+function startTest(subject){
+
+    activeTestSubject=subject;
+
+    testQuestions=
+        testBank[subject] || [];
+
+    if(testQuestions.length===0){
+
+        alert("No questions available.");
+
+        return;
+
+    }
+
+
+    document.getElementById("testScreen")
+        .style.display="block";
+
+
+    document.getElementById("testTitle")
+        .innerText=
+        subjects[subject].name+
+        " — Practice Test";
+
+
+    testTimer=1800;
+
+    renderTestQuestions();
+
+    updateTestTimer();
+
+    clearInterval(testInterval);
+
+    testInterval=setInterval(()=>{
+
+        testTimer--;
+
+        updateTestTimer();
+
+        if(testTimer<=0){
+
+            clearInterval(testInterval);
+
+            alert("Time is over.");
+
+            submitTest();
+
+        }
+
+    },1000);
+
+}
+
+
+function renderTestQuestions(){
+
+    const container=
+        document.getElementById("testQuestions");
+
+    container.innerHTML="";
+
+
+    testQuestions.forEach((question,index)=>{
+
+        let options="";
+
+        question.o.forEach((option,optionIndex)=>{
+
+            options+=`
+
+            <label class="option">
+
+                <input
+                type="radio"
+                name="q${index}"
+                value="${optionIndex}">
+
+                ${option}
+
+            </label>
+
+            `;
+
+        });
+
+
+        container.innerHTML+=`
+
+        <div class="mcq">
+
+            <h3>
+                ${index+1}. ${question.q}
+            </h3>
+
+            ${options}
+
+        </div>
+
+        `;
+
+    });
+
+}
+
+
+function updateTestTimer(){
+
+    const minutes=
+        Math.floor(testTimer/60);
+
+    const seconds=
+        testTimer%60;
+
+    document.getElementById("testTimer")
+        .innerText=
+        String(minutes).padStart(2,"0")+
+        ":"+
+        String(seconds).padStart(2,"0");
+
+}
+
+
+/* =========================================================
+   SUBMIT TEST
+========================================================= */
+
+function submitTest(){
+
+    clearInterval(testInterval);
+
+    let score=0;
+
+
+    testQuestions.forEach((question,index)=>{
+
+        const selected=
+            document.querySelector(
+                `input[name="q${index}"]:checked`
+            );
+
+
+        if(selected){
+
+            if(
+                Number(selected.value)
+                ===question.a
+            ){
+
+                score++;
+
+            }
+
+        }
+
+    });
+
+
+    document.getElementById("testScreen")
+        .style.display="none";
+
+
+    alert(
+        "Test Submitted!\n\n"+
+        "Subject: "+
+        subjects[activeTestSubject].name+
+        "\nScore: "+
+        score+
+        " / "+
+        testQuestions.length
+    );
+
+}
+
+
+/* =========================================================
+   INITIALIZE
+========================================================= */
+
+setupFilters();
+
+renderSubjects();
+
+renderPapers();
+
+renderTests();
+
+</script>
+
+</body>
+</html>
